@@ -33,20 +33,8 @@ void RecvSimpleTest()
           return;
     }
 
-    //mq->SetQueue( "Q_PUB_ORDERPRICE", "Q_PUB_ORDERPRICE", "ORDERPRICE_ALL" );
-//    mq->SetQueue( "Q_PUB_ORDERPRICE", "MYCCEX_QUEUE", "ORDERPRICE_GROUP1" );
-//    if ( !mq->DeclareQueue()) {
-//             printf(" Error while doing DeclareQueue message=%s\n", mq->GetLastErrMsg() );
-//             return;
-//    }
-//
-//    if ( !mq->BindQueue() ) {
-//             printf(" Error while doing BindQueue message=%s\n", mq->GetLastErrMsg() );
-//             return;
-//     }
 
-    //if ( !mq->CreateQueue("Q_PUB_ORDERPRICE", "ORDERPRICE_GROUP1", "ORDERPRICE_GROUP1") )
-    if ( !mq->CreateQueue("Q_PUB_TICKSTATISTICS", "TICKSTATISTICS_ALL", "TICKSTATISTICS_ALL") )
+    if ( !mq->CreateQueue("Q_PUB_ORDERPRICE", "ORDERPRICE_GROUP1", "ORDERPRICE_GROUP1") )
     {
         printf(" Error while doing CreateQueue message=%s\n", mq->GetLastErrMsg() );
     }
