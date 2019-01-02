@@ -1,10 +1,7 @@
 # rbmq
 C++ wrapping class for convenient use of  rabbitmq-c
 
-# rbmq C++ class
-
 메세지 큐의 한 종류인 rabbitmq를 위한   C 언어 library 인   rabbitmq-c  library를  좀더 쉽게 사용할 수 있도록 C++ class 로 wrapping 하였다.
-
 
 
 # 소스 구성
