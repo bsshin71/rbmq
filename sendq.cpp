@@ -41,16 +41,6 @@ void createQueue()
             printf(" Error while doing CreateQueue message=%s\n", pro->GetLastErrMsg() );
         }
 
-        if ( !pro->CreateQueue("Q_PUB_ORDERPRICE", "ORDERPRICE_GROUP2", "ORDERPRICE_GROUP3") )
-        {
-            printf(" Error while doing CreateQueue message=%s\n", pro->GetLastErrMsg() );
-        }
-
-        if ( !pro->CreateQueue("Q_PUB_ORDERPRICE", "ORDERPRICE_GROUP3", "ORDERPRICE_GROUP3") )
-        {
-            printf(" Error while doing CreateQueue message=%s\n", pro->GetLastErrMsg() );
-        }
-
         if( !pro->CloseChannel() ) {
             printf(" Error while doing CloseChannel message=%s\n", pro->GetLastErrMsg() );
         }
