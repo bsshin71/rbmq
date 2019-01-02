@@ -1,0 +1,58 @@
+#Build kxFramework Engine Library
+#------------------------------------------------------------------------------
+#Project Info
+
+PROGRAM = librbmq.a
+LIBDIR   = ../../../lib
+
+#------------------------------------------------------------------------------
+# Compiler Info
+
+CP = cp
+MV = mv
+CC = g++
+CFLAGS:= -g -Wall -D_REENTRANT -Wno-deprecated
+#------------------------------------------------------------------------------
+#Link Info
+
+
+PLUGIN_INC:= -I../../ext/plugin
+RABBITMQ_INC:=-I/usr/include -I../../lib/rabbitmq/rabbitmq-c/librabbitmq
+RABBITMQ_LIBPATH:=/usr/local/lib64
+LIBPATH:=-L/usr/lib/x86_64-linux-gnu -L../../lib
+
+DEF_INC:=-I. -I../include -I../../inc  -I../../../inc
+ENGINE_FW_KX_INC:=-I../kx.framework/include  -I../../ccex.engine
+
+
+INCS:= $(DEF_INC) $(ENGINE_FW_KX_INC) \
+       $(RABBITMQ_INC) $(PLUGIN_INC)
+
+#c/c++ 혼합시 c++ 코드는 직접 .a 지정, c 코드는 -l옵션
+LIBS:= -L. -L$(RABBITMQ_LIBPATH) $(LIBPATH) -lpthread \
+       -lkxcomn -lkxutil -lkxdbpool -lkxthread -lrabbitmq 
+        #libdbpool.a libthread.a libutil.a 
+
+#------------------------------------------------------------------------------
+#Module Info
+
+.SUFFIXES: .o .cpp
+
+.cpp.o:
+        $(CC) $(CFLAGS) -c $*.cpp $(INCS) $(LIBS)
+
+OBJS = rbmq.o  \
+
+#------------------------------------------------------------------------------
+#Make Info
+
+all: $(PROGRAM)
+
+$(PROGRAM): $(OBJS)
+        ar r $@ $(OBJS)
+        $(MV) $@ $(LIBDIR)
+
+clean:
+        rm $(OBJS)
+clean:
+        rm -f *.o
